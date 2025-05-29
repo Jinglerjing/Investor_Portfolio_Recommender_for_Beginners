@@ -1,0 +1,21 @@
+ticker,sector,industry,marketCap,beta,dividendYield,trailingPE,forwardPE,earningsQuarterlyGrowth,fullTimeEmployees,country,website
+ABBV,Healthcare,Drug Manufacturers - General,323710451712,0.551,3.58,77.98298,15.107996,-0.061,55000,United States,https://www.abbvie.com
+ABT,Healthcare,Medical Devices,228440997888,0.743,1.8,17.074123,25.445738,0.082,114000,United States,https://www.abbott.com
+AMGN,Healthcare,Drug Manufacturers - General,146073206784,0.497,3.5,24.74135,13.142719,,28000,United States,https://www.amgen.com
+JNJ,Healthcare,Drug Manufacturers - General,367984345088,0.411,3.4,17.012236,14.428302,2.379,138100,United States,https://www.jnj.com
+PFE,Healthcare,Drug Manufacturers - General,132582825984,0.502,7.38,16.89855,7.959044,-0.048,81000,United States,https://www.pfizer.com
+LLY,Healthcare,Drug Manufacturers - General,640723189760,0.472,0.84,58.11971,31.496471,0.23,47000,United States,https://www.lilly.com
+MRK,Healthcare,Drug Manufacturers - General,194805710848,0.441,4.18,11.276163,8.253192,0.067,73000,United States,https://www.merck.com
+GEHC,Healthcare,Health Information Services,31667326976,1.377,0.2,14.529412,14.8094225,0.508,53000,United States,https://www.gehealthcare.com
+ISRG,Healthcare,Medical Instruments & Supplies,193380827136,1.702,,78.76496,68.64376,0.282,15638,United States,https://www.intuitive.com
+MDT,Healthcare,Medical Devices,103426113536,0.83,3.52,22.349031,13.791453,0.616,95000,Ireland,https://www.medtronic.com
+DHR,Healthcare,Diagnostics & Research,132069736448,0.834,0.69,35.69439,22.021479,-0.123,61000,United States,https://www.danaher.com
+GILD,Healthcare,Drug Manufacturers - General,133560762368,0.282,2.94,22.556723,14.450875,,17600,United States,https://www.gilead.com
+BIIB,Healthcare,Drug Manufacturers - General,18434686976,0.124,,12.431818,7.5516205,-0.389,7605,United States,https://www.biogen.com
+DXCM,Healthcare,Medical Devices,33136963584,1.435,,63.54135,41.630543,-0.28,10200,United States,https://www.dexcom.com/global
+IDXX,Healthcare,Diagnostics & Research,40337215488,1.525,,46.31302,41.93729,0.03,11000,United States,https://www.idexx.com
+BMY,Healthcare,Drug Manufacturers - General,95343493120,0.4,5.29,17.481342,6.6642957,,34100,United States,https://www.bms.com
+TMO,Healthcare,Diagnostics & Research,148604289024,0.826,0.44,23.088564,16.758621,0.135,125000,United States,https://www.thermofisher.com
+AZN,Healthcare,Drug Manufacturers - General,218298466304,0.176,2.2,28.27711,12.825138,0.338,94300,United Kingdom,https://www.astrazeneca.com
+HCA,Healthcare,Medical Care Facilities,90597761024,1.468,0.76,16.72247,15.339715,0.012,226000,United States,https://hcahealthcare.com
+CVS,Healthcare,Healthcare Plans,76951166976,0.6,4.37,14.5179,9.387346,0.598,219000,United States,https://www.cvshealth.com
