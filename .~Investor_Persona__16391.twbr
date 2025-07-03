@@ -1,0 +1,1000 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='merged_tradingdata+' inline='true' name='federated.0nkc9cu1r5jbhr11vuvex1twodw2' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='merged_tradingdata' name='textscan.096686o09azgxx1d7d36e08g4rre'>
+            <connection class='textscan' directory='/Users/xiejing/Desktop/Codeoptest/Investor_Portfolio_Recommender_for_Beginners' filename='merged_tradingdata.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='final_cleaned_metadata' name='textscan.1hzxzsj0vpotre1842lwv0ejbr6t'>
+            <connection class='textscan' directory='/Users/xiejing/Desktop/Codeoptest/Investor_Portfolio_Recommender_for_Beginners' filename='final_cleaned_metadata.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.096686o09azgxx1d7d36e08g4rre' name='merged_metadata.csv' table='[merged_metadata#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='ticker' ordinal='0' />
+              <column datatype='string' name='sector' ordinal='1' />
+              <column datatype='string' name='industry' ordinal='2' />
+              <column datatype='real' name='marketCap' ordinal='3' />
+              <column datatype='real' name='beta' ordinal='4' />
+              <column datatype='real' name='dividendYield' ordinal='5' />
+              <column datatype='real' name='trailingPE' ordinal='6' />
+              <column datatype='real' name='forwardPE' ordinal='7' />
+              <column datatype='real' name='earningsQuarterlyGrowth' ordinal='8' />
+              <column datatype='real' name='fullTimeEmployees' ordinal='9' />
+              <column datatype='string' name='country' ordinal='10' />
+              <column datatype='string' name='website' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='textscan.096686o09azgxx1d7d36e08g4rre' name='merged_tradingdata.csv' table='[merged_tradingdata#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='date' name='Price' ordinal='0' />
+              <column datatype='real' name='Close' ordinal='1' />
+              <column datatype='real' name='High' ordinal='2' />
+              <column datatype='real' name='Low' ordinal='3' />
+              <column datatype='real' name='Open' ordinal='4' />
+              <column datatype='integer' name='Volume' ordinal='5' />
+              <column datatype='string' name='Ticker' ordinal='6' />
+            </columns>
+          </relation>
+          <relation connection='textscan.096686o09azgxx1d7d36e08g4rre' name='stock_sector_list_2025.csv' table='[stock_sector_list_2025#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='Sector' ordinal='0' />
+              <column datatype='string' name='Ticker' ordinal='1' />
+              <column datatype='string' name='Company Name' ordinal='2' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Close]' value='[merged_tradingdata.csv].[Close]' />
+          <map key='[Company Name]' value='[stock_sector_list_2025.csv].[Company Name]' />
+          <map key='[High]' value='[merged_tradingdata.csv].[High]' />
+          <map key='[Low]' value='[merged_tradingdata.csv].[Low]' />
+          <map key='[Open]' value='[merged_tradingdata.csv].[Open]' />
+          <map key='[Price]' value='[merged_tradingdata.csv].[Price]' />
+          <map key='[Sector]' value='[stock_sector_list_2025.csv].[Sector]' />
+          <map key='[Ticker (stock_sector_list_2025.csv)]' value='[stock_sector_list_2025.csv].[Ticker]' />
+          <map key='[Ticker]' value='[merged_tradingdata.csv].[Ticker]' />
+          <map key='[Volume]' value='[merged_tradingdata.csv].[Volume]' />
+          <map key='[beta]' value='[merged_metadata.csv].[beta]' />
+          <map key='[country]' value='[merged_metadata.csv].[country]' />
+          <map key='[dividendYield]' value='[merged_metadata.csv].[dividendYield]' />
+          <map key='[earningsQuarterlyGrowth]' value='[merged_metadata.csv].[earningsQuarterlyGrowth]' />
+          <map key='[forwardPE]' value='[merged_metadata.csv].[forwardPE]' />
+          <map key='[fullTimeEmployees]' value='[merged_metadata.csv].[fullTimeEmployees]' />
+          <map key='[industry]' value='[merged_metadata.csv].[industry]' />
+          <map key='[marketCap]' value='[merged_metadata.csv].[marketCap]' />
+          <map key='[sector]' value='[merged_metadata.csv].[sector]' />
+          <map key='[ticker]' value='[merged_metadata.csv].[ticker]' />
+          <map key='[trailingPE]' value='[merged_metadata.csv].[trailingPE]' />
+          <map key='[website]' value='[merged_metadata.csv].[website]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[stock_sector_list_2025.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ticker</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ticker]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>ticker</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sector</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sector]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>sector</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>industry</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[industry]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>industry</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>marketCap</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[marketCap]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>marketCap</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>beta</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[beta]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>beta</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dividendYield</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dividendYield]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>dividendYield</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trailingPE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[trailingPE]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>trailingPE</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>forwardPE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[forwardPE]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>forwardPE</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>earningsQuarterlyGrowth</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[earningsQuarterlyGrowth]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>earningsQuarterlyGrowth</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fullTimeEmployees</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fullTimeEmployees]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>fullTimeEmployees</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[country]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>country</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>website</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[website]</local-name>
+            <parent-name>[merged_metadata.csv]</parent-name>
+            <remote-alias>website</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Price</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Price]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>Price</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Close</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Close]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>Close</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>High</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[High]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>High</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Low</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Low]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>Low</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Open</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Open]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>Open</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Volume</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Volume]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>Volume</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Ticker</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Ticker]</local-name>
+            <parent-name>[merged_tradingdata.csv]</parent-name>
+            <remote-alias>Ticker</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sector</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sector]</local-name>
+            <parent-name>[stock_sector_list_2025.csv]</parent-name>
+            <remote-alias>Sector</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Ticker</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Ticker (stock_sector_list_2025.csv)]</local-name>
+            <parent-name>[stock_sector_list_2025.csv]</parent-name>
+            <remote-alias>Ticker</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Company Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Company Name]</local-name>
+            <parent-name>[stock_sector_list_2025.csv]</parent-name>
+            <remote-alias>Company Name</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Sector1' datatype='string' name='[Sector]' role='dimension' type='nominal' />
+      <column caption='Ticker (stock sector list 2025.csv)' datatype='string' name='[Ticker (stock_sector_list_2025.csv)]' role='dimension' type='nominal' />
+      <column caption='Ticker1' datatype='string' name='[Ticker]' role='dimension' type='nominal' />
+      <column caption='merged_metadata.csv' datatype='table' name='[__tableau_internal_object_id__].[merged_metadata.csv_26F2DF77611046069E466F246440E414]' role='measure' type='quantitative' />
+      <column caption='merged_tradingdata.csv' datatype='table' name='[__tableau_internal_object_id__].[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]' role='measure' type='quantitative' />
+      <column caption='stock_sector_list_2025.csv' datatype='table' name='[__tableau_internal_object_id__].[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]' role='measure' type='quantitative' />
+      <column caption='Beta' datatype='real' name='[beta]' role='measure' type='quantitative' />
+      <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Dividend Yield' datatype='real' datatype-customized='true' name='[dividendYield]' role='measure' type='quantitative' />
+      <column caption='Earnings Quarterly Growth' datatype='real' name='[earningsQuarterlyGrowth]' role='measure' type='quantitative' />
+      <column caption='Forward PE' datatype='real' name='[forwardPE]' role='measure' type='quantitative' />
+      <column caption='Full Time Employees' datatype='real' name='[fullTimeEmployees]' role='measure' type='quantitative' />
+      <column caption='Industry' datatype='string' name='[industry]' role='dimension' type='nominal' />
+      <column caption='Market Cap' datatype='real' name='[marketCap]' role='measure' type='quantitative' />
+      <column caption='Sector' datatype='string' name='[sector]' role='dimension' type='nominal' />
+      <column caption='Ticker' datatype='string' name='[ticker]' role='dimension' type='nominal' />
+      <column caption='Trailing PE' datatype='real' name='[trailingPE]' role='measure' type='quantitative' />
+      <column caption='Website' datatype='string' name='[website]' role='dimension' type='nominal' />
+      <column-instance column='[Sector]' derivation='None' name='[none:Sector:nk]' pivot='key' type='nominal' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='/var/folders/bg/bg6_lhk10cb2v0n9434vjxb80000gn/T/tableau-temp/#TableauTemp_093noiw1mndjmg13tor951kqa1xm.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/16/2025 12:21:25 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='merged_metadata.csv_26F2DF77611046069E466F246440E414' table='[Extract].[merged_metadata.csv_26F2DF77611046069E466F246440E414]' type='table' />
+            <relation name='merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D' table='[Extract].[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]' type='table' />
+            <relation name='stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD' table='[Extract].[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]' type='table' />
+          </relation>
+          <cols>
+            <map key='[Close]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[Close]' />
+            <map key='[Company Name]' value='[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD].[Company Name]' />
+            <map key='[High]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[High]' />
+            <map key='[Low]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[Low]' />
+            <map key='[Open]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[Open]' />
+            <map key='[Price]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[Price]' />
+            <map key='[Sector]' value='[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD].[Sector]' />
+            <map key='[Ticker (stock_sector_list_2025.csv)]' value='[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD].[Ticker]' />
+            <map key='[Ticker]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[Ticker]' />
+            <map key='[Volume]' value='[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D].[Volume]' />
+            <map key='[beta]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[beta]' />
+            <map key='[country]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[country]' />
+            <map key='[dividendYield]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[dividendYield]' />
+            <map key='[earningsQuarterlyGrowth]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[earningsQuarterlyGrowth]' />
+            <map key='[forwardPE]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[forwardPE]' />
+            <map key='[fullTimeEmployees]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[fullTimeEmployees]' />
+            <map key='[industry]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[industry]' />
+            <map key='[marketCap]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[marketCap]' />
+            <map key='[sector]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[sector]' />
+            <map key='[ticker]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[ticker]' />
+            <map key='[trailingPE]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[trailingPE]' />
+            <map key='[website]' value='[merged_metadata.csv_26F2DF77611046069E466F246440E414].[website]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>ticker</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ticker]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>ticker</remote-alias>
+              <ordinal>0</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>198</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sector</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[sector]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>sector</remote-alias>
+              <ordinal>1</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>industry</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[industry]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>industry</remote-alias>
+              <ordinal>2</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>75</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>marketCap</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[marketCap]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>marketCap</remote-alias>
+              <ordinal>3</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>196</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>beta</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[beta]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>beta</remote-alias>
+              <ordinal>4</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>187</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>dividendYield</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[dividendYield]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>dividendYield</remote-alias>
+              <ordinal>5</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>147</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trailingPE</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[trailingPE]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>trailingPE</remote-alias>
+              <ordinal>6</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>186</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>forwardPE</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[forwardPE]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>forwardPE</remote-alias>
+              <ordinal>7</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>196</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>earningsQuarterlyGrowth</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[earningsQuarterlyGrowth]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>earningsQuarterlyGrowth</remote-alias>
+              <ordinal>8</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>162</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fullTimeEmployees</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fullTimeEmployees]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>fullTimeEmployees</remote-alias>
+              <ordinal>9</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>182</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[country]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>country</remote-alias>
+              <ordinal>10</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>website</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[website]</local-name>
+              <parent-name>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</parent-name>
+              <remote-alias>website</remote-alias>
+              <ordinal>11</ordinal>
+              <family>merged_metadata.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>196</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[merged_metadata.csv_26F2DF77611046069E466F246440E414]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Price</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Price]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>Price</remote-alias>
+              <ordinal>12</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>7723</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Close</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Close]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>Close</remote-alias>
+              <ordinal>13</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>245294</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>High</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[High]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>High</remote-alias>
+              <ordinal>14</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>277655</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Low</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Low]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>Low</remote-alias>
+              <ordinal>15</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>266869</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Open</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Open]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>Open</remote-alias>
+              <ordinal>16</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>256082</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Volume</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Volume]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>Volume</remote-alias>
+              <ordinal>17</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>169744</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Ticker</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Ticker]</local-name>
+              <parent-name>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</parent-name>
+              <remote-alias>Ticker</remote-alias>
+              <ordinal>18</ordinal>
+              <family>merged_tradingdata.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>238</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Sector</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Sector]</local-name>
+              <parent-name>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</parent-name>
+              <remote-alias>Sector</remote-alias>
+              <ordinal>19</ordinal>
+              <family>stock_sector_list_2025.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>11</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Ticker</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Ticker (stock_sector_list_2025.csv)]</local-name>
+              <parent-name>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</parent-name>
+              <remote-alias>Ticker</remote-alias>
+              <ordinal>20</ordinal>
+              <family>stock_sector_list_2025.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>219</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Company Name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Company Name]</local-name>
+              <parent-name>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</parent-name>
+              <remote-alias>Company Name</remote-alias>
+              <ordinal>21</ordinal>
+              <family>stock_sector_list_2025.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>220</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Sector:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Materials&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Energy&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Real Estate&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Financials&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Communication Services&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Healthcare&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Technology&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Industrials&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Consumer Discretionary&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Utilities&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Consumer Staples&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='merged_metadata.csv' id='merged_metadata.csv_26F2DF77611046069E466F246440E414'>
+            <properties context=''>
+              <relation connection='textscan.096686o09azgxx1d7d36e08g4rre' name='merged_metadata.csv' table='[merged_metadata#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='ticker' ordinal='0' />
+                  <column datatype='string' name='sector' ordinal='1' />
+                  <column datatype='string' name='industry' ordinal='2' />
+                  <column datatype='real' name='marketCap' ordinal='3' />
+                  <column datatype='real' name='beta' ordinal='4' />
+                  <column datatype='real' name='dividendYield' ordinal='5' />
+                  <column datatype='real' name='trailingPE' ordinal='6' />
+                  <column datatype='real' name='forwardPE' ordinal='7' />
+                  <column datatype='real' name='earningsQuarterlyGrowth' ordinal='8' />
+                  <column datatype='real' name='fullTimeEmployees' ordinal='9' />
+                  <column datatype='string' name='country' ordinal='10' />
+                  <column datatype='string' name='website' ordinal='11' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='merged_metadata.csv_26F2DF77611046069E466F246440E414' table='[Extract].[merged_metadata.csv_26F2DF77611046069E466F246440E414]' type='table' />
+            </properties>
+          </object>
+          <object caption='merged_tradingdata.csv' id='merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D'>
+            <properties context=''>
+              <relation connection='textscan.096686o09azgxx1d7d36e08g4rre' name='merged_tradingdata.csv' table='[merged_tradingdata#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='date' name='Price' ordinal='0' />
+                  <column datatype='real' name='Close' ordinal='1' />
+                  <column datatype='real' name='High' ordinal='2' />
+                  <column datatype='real' name='Low' ordinal='3' />
+                  <column datatype='real' name='Open' ordinal='4' />
+                  <column datatype='integer' name='Volume' ordinal='5' />
+                  <column datatype='string' name='Ticker' ordinal='6' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D' table='[Extract].[merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D]' type='table' />
+            </properties>
+          </object>
+          <object caption='stock_sector_list_2025.csv' id='stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD'>
+            <properties context=''>
+              <relation connection='textscan.096686o09azgxx1d7d36e08g4rre' name='stock_sector_list_2025.csv' table='[stock_sector_list_2025#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='Sector' ordinal='0' />
+                  <column datatype='string' name='Ticker' ordinal='1' />
+                  <column datatype='string' name='Company Name' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD' table='[Extract].[stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[ticker]' />
+              <expression op='[Ticker]' />
+            </expression>
+            <first-end-point object-id='merged_metadata.csv_26F2DF77611046069E466F246440E414' />
+            <second-end-point object-id='merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Ticker]' />
+              <expression op='[Ticker (stock_sector_list_2025.csv)]' />
+            </expression>
+            <first-end-point object-id='merged_tradingdata.csv_6B13BDFFDED24B97912438026005FF4D' />
+            <second-end-point object-id='stock_sector_list_2025.csv_054CD66976544E28BE3EF7AFD86C54AD' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='merged_tradingdata+' name='federated.0nkc9cu1r5jbhr11vuvex1twodw2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0nkc9cu1r5jbhr11vuvex1twodw2'>
+            <column datatype='real' name='[Close]' role='measure' type='quantitative' />
+            <column caption='Sector1' datatype='string' name='[Sector]' role='dimension' type='nominal' />
+            <column-instance column='[Sector]' derivation='None' name='[none:Sector:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Close]' derivation='Sum' name='[sum:Close:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0nkc9cu1r5jbhr11vuvex1twodw2].[none:Sector:nk]'>
+            <groupfilter function='member' level='[none:Sector:nk]' member='&quot;Communication Services&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0nkc9cu1r5jbhr11vuvex1twodw2].[none:Sector:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0nkc9cu1r5jbhr11vuvex1twodw2].[none:Sector:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0nkc9cu1r5jbhr11vuvex1twodw2].[sum:Close:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{3D3D698F-85F4-4FD2-A757-52C607BCCA9D}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0nkc9cu1r5jbhr11vuvex1twodw2].[none:Sector:nk]' type='filter' />
+            <card pane-specification-id='2' param='[federated.0nkc9cu1r5jbhr11vuvex1twodw2].[none:Sector:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2155D1AC-2F68-43F5-B4E0-B9285AEF0908}' />
+    </window>
+  </windows>
+</workbook>

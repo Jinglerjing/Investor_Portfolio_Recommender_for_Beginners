@@ -1,0 +1,214 @@
+sector,ticker,company_name
+Technology,AAPL,Apple Inc.
+Technology,MSFT,Microsoft Corp.
+Technology,AMD,Advanced Micro Devices
+Technology,ADBE,Adobe Inc.
+Technology,AVGO,Broadcom Inc.
+Technology,INTC,Intel Corp.
+Technology,CRM,Salesforce
+Technology,CSCO,Cisco Systems
+Technology,NVDA,NVIDIA
+Technology,ORCL,Oracle Corp.
+Technology,QCOM,Qualcomm
+Technology,PLTR,Palantir Technologies
+Technology,IBM,IBM
+Technology,NOW,ServiceNow
+Technology,TXN,Texas Instruments
+Technology,CDNS,Cadence Design Systems
+Technology,ASML,ASML Holding
+Technology,GFS,GlobalFoundries
+Technology,APP,AppLovin
+Technology,ANSS,Ansys
+Healthcare,ABBV,AbbVie
+Healthcare,ABT,Abbott Laboratories
+Healthcare,AMGN,Amgen
+Healthcare,JNJ,Johnson & Johnson
+Healthcare,PFE,Pfizer
+Healthcare,LLY,Eli Lilly
+Healthcare,MRK,Merck & Co.
+Healthcare,GEHC,GE HealthCare
+Healthcare,ISRG,Intuitive Surgical
+Healthcare,MDT,Medtronic
+Healthcare,DHR,Danaher
+Healthcare,GILD,Gilead Sciences
+Healthcare,BIIB,Biogen
+Healthcare,DXCM,DexCom
+Healthcare,IDXX,IDEXX Laboratories
+Healthcare,BMY,Bristol Myers Squibb
+Healthcare,TMO,Thermo Fisher Scientific
+Healthcare,AZN,AstraZeneca
+Healthcare,HCA,HCA Healthcare
+Healthcare,CVS,CVS Health
+Financial_Services,AIG,American International Group
+Financial_Services,AXP,American Express
+Financial_Services,BAC,Bank of America
+Financial_Services,BK,BNY Mellon
+Financial_Services,C,Citigroup
+Financial_Services,GS,Goldman Sachs
+Financial_Services,JPM,JPMorgan Chase
+Financial_Services,MA,Mastercard
+Financial_Services,MET,MetLife
+Financial_Services,MS,Morgan Stanley
+Financial_Services,PYPL,PayPal
+Financial_Services,SCHW,Charles Schwab
+Financial_Services,USB,U.S. Bancorp
+Financial_Services,COF,Capital One
+Financial_Services,BLK,BlackRock
+Financial_Services,TROW,T. Rowe Price
+Financial_Services,PGR,Progressive
+Financial_Services,FITB,Fifth Third Bancorp
+Consumer_Cyclical,AMZN,Amazon.com
+Consumer_Cyclical,TSLA,Tesla
+Consumer_Cyclical,HD,Home Depot
+Consumer_Cyclical,MCD,McDonald’s
+Consumer_Cyclical,BKNG,Booking Holdings
+Consumer_Cyclical,GM,General Motors
+Consumer_Cyclical,LOW,Lowe’s
+Consumer_Cyclical,NKE,Nike
+Consumer_Cyclical,SBUX,Starbucks
+Consumer_Cyclical,TGT,Target
+Consumer_Cyclical,ABNB,Airbnb
+Consumer_Cyclical,YUM,Yum! Brands
+Consumer_Cyclical,ROST,Ross Stores
+Consumer_Cyclical,TJX,TJX Companies
+Consumer_Cyclical,ULTA,Ulta Beauty
+Consumer_Cyclical,F,Ford Motor
+Consumer_Cyclical,EBAY,eBay
+Consumer_Cyclical,ETSY,Etsy
+Consumer_Cyclical,BBY,Best Buy
+Consumer_Defensive,CL,Colgate-Palmolive
+Consumer_Defensive,COST,Costco
+Consumer_Defensive,KO,Coca-Cola
+Consumer_Defensive,MDLZ,Mondelez
+Consumer_Defensive,MO,Altria
+Consumer_Defensive,PG,Procter & Gamble
+Consumer_Defensive,PEP,PepsiCo
+Consumer_Defensive,WMT,Walmart
+Consumer_Defensive,KDP,Keurig Dr Pepper
+Consumer_Defensive,CLX,Clorox
+Consumer_Defensive,KR,Kroger
+Consumer_Defensive,UNFI,United Natural Foods
+Consumer_Defensive,GIS,General Mills
+Consumer_Defensive,TSN,Tyson Foods
+Consumer_Defensive,SYY,Sysco
+Consumer_Defensive,ADM,Archer-Daniels-Midland
+Consumer_Defensive,KMB,Kimberly-Clark
+Consumer_Defensive,EL,Estée Lauder
+Consumer_Defensive,HSY,Hershey
+Consumer_Defensive,CHD,Church & Dwight
+Energy,COP,ConocoPhillips
+Energy,CVX,Chevron
+Energy,XOM,ExxonMobil
+Energy,FANG,Diamondback Energy
+Energy,BKR,Baker Hughes
+Energy,EOG,EOG Resources
+Energy,OXY,Occidental Petroleum
+Energy,PSX,Phillips 66
+Energy,HAL,Halliburton
+Energy,SLB,Schlumberger
+Energy,VLO,Valero Energy
+Energy,HES,Hess Corp.
+Energy,DVN,Devon Energy
+Energy,MPC,Marathon Petroleum
+Energy,APA,APA Corporation
+Energy,SM,SM Energy
+Energy,MTDR,Matador Resources
+Industrials,BA,Boeing
+Industrials,CAT,Caterpillar
+Industrials,DE,Deere
+Industrials,EMR,Emerson Electric
+Industrials,FDX,FedEx
+Industrials,GD,General Dynamics
+Industrials,HON,Honeywell
+Industrials,LMT,Lockheed Martin
+Industrials,UNP,Union Pacific
+Industrials,UPS,United Parcel Service
+Industrials,CSX,CSX Corp
+Industrials,ADP,Automatic Data Processing
+Industrials,MMM,3M
+Industrials,RTX,RTX
+Industrials,GE,General Electric
+Industrials,SWK,Stanley Black & Decker
+Industrials,ITW,Illinois Tool Works
+Industrials,ETN,Eaton
+Industrials,IR,Ingersoll Rand
+Industrials,PCAR,PACCAR Inc.
+Conmmunication_Services,DIS,Walt Disney
+Conmmunication_Services,GOOG,Alphabet Class C
+Conmmunication_Services,GOOGL,Alphabet Class A
+Conmmunication_Services,META,Meta Platforms
+Conmmunication_Services,CMCSA,Comcast
+Conmmunication_Services,T,AT&T
+Conmmunication_Services,TMUS,T-Mobile US
+Conmmunication_Services,CHTR,Charter Communications
+Conmmunication_Services,NFLX,Netflix
+Conmmunication_Services,VZ,Verizon
+Conmmunication_Services,SIRI,Sirius XM
+Conmmunication_Services,PARA,Paramount Global
+Conmmunication_Services,FOXA,Fox Corp Class A
+Conmmunication_Services,WBD,Warner Bros. Discovery
+Conmmunication_Services,TTWO,Take-Two Interactive
+Conmmunication_Services,LYV,Live Nation Entertainment
+Conmmunication_Services,BIDU,Baidu
+Conmmunication_Services,NTES,NetEase
+Conmmunication_Services,SPOT,Spotify
+Utilities,DUK,Duke Energy
+Utilities,NEE,NextEra Energy
+Utilities,SO,Southern Company
+Utilities,EXC,Exelon
+Utilities,CEG,Constellation Energy
+Utilities,XEL,Xcel Energy
+Utilities,AEP,American Electric Power
+Utilities,ES,Eversource Energy
+Utilities,D,Dominion Energy
+Utilities,NRG,NRG Energy
+Utilities,PPL,PPL Corp
+Utilities,PEG,Public Service Enterprise Group
+Utilities,ED,Consolidated Edison
+Utilities,EVRG,Evergy
+Utilities,EIX,Edison International
+Utilities,WEC,WEC Energy Group
+Utilities,AWK,American Water Works
+Utilities,ATO,Atmos Energy
+Utilities,SRE,Sempra
+Utilities,CMS,CMS Energy
+Real_Estate,AMT,American Tower
+Real_Estate,CSGP,CoStar Group
+Real_Estate,SPG,Simon Property Group
+Real_Estate,WELL,Welltower
+Real_Estate,O,Realty Income
+Real_Estate,PLD,Prologis
+Real_Estate,BXP,Boston Properties
+Real_Estate,EQIX,Equinix
+Real_Estate,PSA,Public Storage
+Real_Estate,EQR,Equity Residential
+Real_Estate,VNO,Vornado Realty Trust
+Real_Estate,SLG,SL Green Realty
+Real_Estate,AVB,AvalonBay Communities
+Real_Estate,FRT,Federal Realty Investment Trust
+Real_Estate,OHI,Omega Healthcare Investors
+Real_Estate,DLR,Digital Realty
+Real_Estate,HST,Host Hotels & Resorts
+Real_Estate,WY,Weyerhaeuser
+Real_Estate,IRM,Iron Mountain
+Real_Estate,ARE,Alexandria Real Estate
+Basic_Materials,LIN,Linde plc
+Basic_Materials,DD,DuPont
+Basic_Materials,ECL,Ecolab
+Basic_Materials,FCX,Freeport-McMoRan
+Basic_Materials,NEM,Newmont
+Basic_Materials,APD,Air Products & Chemicals
+Basic_Materials,MOS,Mosaic
+Basic_Materials,PPG,PPG Industries
+Basic_Materials,RPM,RPM International
+Basic_Materials,CE,Celanese
+Basic_Materials,EMN,Eastman Chemical
+Basic_Materials,ALB,Albemarle
+Basic_Materials,VMC,Vulcan Materials
+Basic_Materials,CF,CF Industries
+Basic_Materials,TREX,Trex Company
+Basic_Materials,MLM,Martin Marietta Materials
+Basic_Materials,IFF,International Flavors & Fragrances
+Basic_Materials,NUE,Nucor
+Basic_Materials,AVY,Avery Dennison
+Basic_Materials,BALL,Ball Corp

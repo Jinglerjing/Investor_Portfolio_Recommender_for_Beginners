@@ -1,0 +1,20 @@
+
+# Ignore all sector CSV files and metadata
+Consumer_Discretionary/*.csv
+Financials/*.csv
+Healthcare/*.csv
+tech/*.csv
+
+# Ignore top-level dataset files
+*.csv
+
+# But keep selected files explicitly (tracked manually)
+!data_README.md
+!DISCLAIMER.md
+!Yahoo_Stock_data_ETL.ipynb
+
+# Ignore Jupyter checkpoint files
+.ipynb_checkpoints/
+
+# Ignore system files
+.DS_Store

@@ -1,0 +1,199 @@
+ticker,sector,industry,marketCap,beta,dividendYield,trailingPE,forwardPE,earningsQuarterlyGrowth,fullTimeEmployees,country,website
+LIN,Basic Materials,Specialty Chemicals,219347976192.0,0.979,1.29,33.791153,27.491446,0.028,65069.0,United Kingdom,https://www.linde.com
+DD,Basic Materials,Specialty Chemicals,27985029120.0,1.03,2.45,2229.0002,15.2323475,,24000.0,United States,https://www.dupont.com
+ECL,Basic Materials,Specialty Chemicals,74906968064.0,1.044,0.98,35.946938,35.228,,48000.0,United States,https://www.ecolab.com
+FCX,Basic Materials,Copper,58798022656.0,1.632,1.47,33.557377,18.953703,-0.256,28500.0,United States,https://fcx.com
+NEM,Basic Materials,Gold,64442699776.0,0.322,1.73,13.189067,15.117495,10.124,22200.0,United States,https://www.newmont.com
+APD,Basic Materials,Specialty Chemicals,62394658816.0,0.873,2.55,40.341007,19.786167,,21850.0,United States,https://www.airproducts.com
+MOS,Basic Materials,Agricultural Inputs,11344180224.0,1.148,2.46,30.827585,14.536585,4.268,13765.0,United States,https://mosaicco.com
+PPG,Basic Materials,Specialty Chemicals,24127444992.0,1.156,2.56,18.78092,12.011299,-0.068,46000.0,United States,https://www.ppg.com
+RPM,Basic Materials,Specialty Chemicals,13879958528.0,1.059,1.89,21.65932,17.545456,-0.15,17200.0,United States,https://www.rpminc.com
+CE,Basic Materials,Chemicals,5976904704.0,1.133,0.22,,5.6787944,,11000.0,United States,https://www.celanese.com
+EMN,Basic Materials,Specialty Chemicals,8796897280.0,1.264,4.36,9.705733,8.757472,0.103,14000.0,United States,https://www.eastman.com
+ALB,Basic Materials,Specialty Chemicals,7144375808.0,1.614,2.67,,33.0,15.891,8300.0,United States,https://www.albemarle.com
+VMC,Basic Materials,Building Materials,34448756736.0,0.836,0.75,36.625,28.719162,0.255,11971.0,United States,https://www.vulcanmaterials.com
+CF,Basic Materials,Agricultural Inputs,16189659136.0,0.955,2.0,13.218254,16.169903,0.608,2800.0,United States,https://www.cfindustries.com
+TREX,Industrials,Building Products & Equipment,5935014400.0,1.527,,30.2459,25.389906,-0.322,1838.0,United States,https://www.trex.com
+MLM,Basic Materials,Building Materials,32703019008.0,0.886,0.58,31.158527,26.03023,-0.889,9400.0,United States,https://www.martinmarietta.com
+IFF,Basic Materials,Specialty Chemicals,19463059456.0,1.076,2.1,,16.505423,,22400.0,United States,https://www.iff.com
+NUE,Basic Materials,Steel,28133163008.0,1.747,1.8,21.502645,13.025641,-0.815,32700.0,United States,https://www.nucor.com
+AVY,Consumer Cyclical,Packaging & Containers,13652586496.0,0.89,2.15,20.073565,16.60076,-0.035,35000.0,United States,https://www.averydennison.com
+BALL,Consumer Cyclical,Packaging & Containers,15083215872.0,1.083,1.47,30.892044,15.4022665,-0.951,16000.0,United States,https://www.ball.com
+AMT,Real Estate,REIT - Specialty,100556038144.0,0.828,3.17,34.70113,31.634758,-0.467,4691.0,United States,https://www.americantower.com
+CSGP,Real Estate,Real Estate Services,34240350208.0,0.873,,289.85715,72.46429,,6593.0,United States,https://www.costargroup.com
+SPG,Real Estate,REIT - Retail,59173109760.0,1.486,5.35,24.984076,23.141592,-0.434,2600.0,United States,https://www.simon.com
+WELL,Real Estate,REIT - Healthcare Facilities,99662282752.0,0.921,1.76,87.08571,83.73626,1.029,685.0,United States,https://www.welltower.com
+O,Real Estate,REIT - Retail,52053532672.0,0.766,5.6,52.399998,36.25157,0.888,468.0,United States,https://www.realtyincome.com
+PLD,Real Estate,REIT - Industrial,99547897856.0,1.268,3.77,26.753115,30.477272,0.012,2703.0,United States,https://www.prologis.com
+BXP,Real Estate,REIT - Office,12743171072.0,1.186,5.44,,38.55615,-0.234,816.0,United States,https://www.bxp.com
+EQIX,Real Estate,REIT - Specialty,87317151744.0,0.957,2.1,93.47015,66.7145,0.485,13606.0,United States,https://www.equinix.com
+PSA,Real Estate,REIT - Industrial,51743379456.0,0.879,4.07,29.231913,27.746943,-0.199,5900.0,United States,https://www.publicstorage.com
+EQR,Real Estate,REIT - Residential,26973958144.0,0.919,4.02,26.290077,40.757393,-0.133,2500.0,United States,https://www.equityapartments.com
+VNO,Real Estate,REIT - Office,8431238144.0,1.511,1.83,77.692314,-310.76926,14.761,2996.0,United States,https://www.vno.com
+SLG,Real Estate,REIT - Office,4956946944.0,1.631,4.74,,-28.977776,,1221.0,United States,https://www.slgreen.com
+AVB,Real Estate,REIT - Residential,29353433088.0,0.872,3.4,25.644278,37.216606,0.364,2928.0,United States,https://www.avalonbay.com
+FRT,Real Estate,REIT - Retail,8277642752.0,1.122,4.62,27.382183,31.03909,0.124,304.0,United States,https://www.federalrealty.com
+OHI,Real Estate,REIT - Healthcare Facilities,11017336832.0,0.685,7.24,22.99379,23.73077,0.619,60.0,United States,https://www.omegahealthcare.com
+DLR,Real Estate,REIT - Specialty,59867807744.0,0.975,2.8,164.59435,144.19008,-0.609,3936.0,United States,https://www.digitalrealty.com
+HST,Real Estate,REIT - Hotel & Motel,10701365248.0,1.351,5.26,15.854167,15.6907215,-0.075,165.0,United States,https://www.hosthotels.com
+WY,Real Estate,REIT - Specialty,19437316096.0,1.169,3.13,54.693874,31.162788,-0.272,9400.0,United States,https://www.weyerhaeuser.com
+IRM,Real Estate,REIT - Specialty,29973518336.0,1.111,3.09,247.78049,51.83163,-0.785,28850.0,United States,https://www.ironmountain.com
+ARE,Real Estate,REIT - Office,12474235904.0,1.267,7.32,94.881584,20.96221,,552.0,United States,https://www.are.com
+BA,Industrials,Aerospace & Defense,151042490368.0,1.418,,,426.21277,,172000.0,United States,https://www.boeing.com
+CAT,Industrials,Farm & Heavy Construction Machinery,167925972992.0,1.368,1.69,17.425573,16.119638,-0.299,112900.0,United States,https://www.caterpillar.com
+DE,Industrials,Farm & Heavy Construction Machinery,138010738688.0,1.102,1.27,24.629772,22.985565,-0.239,35200.0,United States,https://www.deere.com/en
+EMR,Industrials,Specialty Industrial Machinery,70616244224.0,1.268,1.68,36.283237,19.863924,-0.032,73000.0,United States,https://www.emerson.com
+FDX,Industrials,Integrated Freight & Logistics,53761224704.0,1.362,2.58,14.120831,9.862858,-0.107,306000.0,United States,https://www.fedex.com
+GD,Industrials,Aerospace & Defense,75956068352.0,0.467,2.12,19.652779,17.599503,0.244,110000.0,United States,https://www.gd.com
+HON,Industrials,Conglomerates,144276111360.0,1.069,2.02,25.78046,20.371479,-0.01,102000.0,United States,https://www.honeywell.com
+LMT,Industrials,Aerospace & Defense,113973288960.0,0.293,2.71,20.967672,17.30523,0.108,121000.0,United States,https://www.lockheedmartin.com
+UNP,Industrials,Railroads,133458206720.0,1.052,2.4,20.123423,18.445087,-0.009,30146.0,United States,https://www.up.com
+UPS,Industrials,Integrated Freight & Logistics,84679802880.0,1.189,6.56,14.59854,11.350738,0.066,490000.0,United States,https://www.ups.com
+CSX,Industrials,Railroads,60339023872.0,1.236,1.62,19.119047,15.8226595,-0.266,23400.0,United States,https://www.csx.com
+ADP,Technology,Software - Application,124545302528.0,0.798,2.01,31.340143,28.226313,0.055,64000.0,United States,https://www.adp.com
+MMM,Industrials,Conglomerates,76593922048.0,1.083,2.05,17.723537,18.01519,0.203,61500.0,United States,https://www.3m.com
+RTX,Industrials,Aerospace & Defense,194634547200.0,0.617,1.87,42.72434,23.844517,-0.102,185000.0,United States,https://www.rtx.com
+GE,Industrials,Aerospace & Defense,252307881984.0,1.389,0.61,37.31861,45.152676,0.285,53000.0,United States,https://www.geaerospace.com
+SWK,Industrials,Tools & Accessories,10096570368.0,1.172,5.03,27.652544,11.887069,3.636,48000.0,United States,https://www.stanleyblackanddecker.com
+ITW,Industrials,Specialty Industrial Machinery,70842023936.0,1.119,2.48,21.27577,22.568224,-0.145,44000.0,United States,https://www.itw.com
+ETN,Industrials,Specialty Industrial Machinery,126648156160.0,1.143,1.29,32.692932,26.85975,0.174,94443.0,Ireland,https://www.eaton.com
+IR,Industrials,Specialty Industrial Machinery,32478771200.0,1.444,0.1,39.851486,22.740112,-0.078,21000.0,United States,https://www.irco.com
+PCAR,Industrials,Farm & Heavy Construction Machinery,48233230336.0,0.954,1.44,13.942336,11.840205,-0.577,30100.0,United States,https://www.paccar.com
+CL,Consumer Defensive,Household & Personal Products,73148506112.0,0.382,2.3,25.569407,23.38342,0.01,34000.0,United States,https://www.colgatepalmolive.com
+COST,Consumer Defensive,Discount Stores,439135371264.0,0.993,0.53,56.1662,50.315548,0.132,333000.0,United States,https://www.costco.com
+KO,Consumer Defensive,Beverages - Non-Alcoholic,305689231360.0,0.464,2.87,28.522087,23.912457,0.048,69700.0,United States,https://www.coca-colacompany.com
+MDLZ,Consumer Defensive,Confectioners,86662299648.0,0.499,2.81,24.88104,19.513119,-0.715,90000.0,United States,https://www.mondelezinternational.com
+MO,Consumer Defensive,Tobacco,100746960896.0,0.643,6.82,10.035235,11.17944,-0.494,14654.0,United States,https://www.altria.com
+PG,Consumer Defensive,Household & Personal Products,375782866944.0,0.427,2.64,25.441269,21.601078,0.004,108000.0,United States,https://www.pginvestor.com
+PEP,Consumer Defensive,Beverages - Non-Alcoholic,179405815808.0,0.466,4.35,19.242647,15.162226,-0.102,319000.0,United States,https://www.pepsico.com
+WMT,Consumer Defensive,Discount Stores,753670881280.0,0.693,1.0,40.35898,34.72059,-0.121,2100000.0,United States,https://corporate.walmart.com
+KDP,Consumer Defensive,Beverages - Non-Alcoholic,44847431680.0,0.496,2.79,30.01818,16.107317,0.139,29000.0,United States,https://www.keurigdrpepper.com
+CLX,Consumer Defensive,Household & Personal Products,15168746496.0,0.533,3.97,22.055555,16.88203,,7400.0,United States,https://www.thecloroxcompany.com
+KR,Consumer Defensive,Grocery Stores,43653320704.0,0.574,1.95,17.86376,14.31441,-0.884,409000.0,United States,https://www.thekrogerco.com
+UNFI,Consumer Defensive,Food Distribution,1290045056.0,0.91,,,20.48077,,28333.0,United States,https://www.unfi.com
+GIS,Consumer Defensive,Packaged Foods,29329512448.0,0.017,4.48,11.771428,11.395745,-0.066,34000.0,United States,https://www.generalmills.com
+TSN,Consumer Defensive,Farm Products,19525185536.0,0.585,3.65,21.326849,15.660001,-0.952,138000.0,United States,https://www.tysonfoods.com
+SYY,Consumer Defensive,Food Distribution,36012224512.0,0.817,2.91,19.196383,15.099593,-0.056,76000.0,United States,https://www.sysco.com
+ADM,Consumer Defensive,Farm Products,24983398400.0,0.656,3.92,18.30986,10.25641,-0.595,42383.0,United States,https://www.adm.com
+KMB,Consumer Defensive,Household & Personal Products,43414802432.0,0.398,3.85,17.825613,17.148098,-0.124,38000.0,United States,https://www.kimberly-clark.com
+EL,Consumer Defensive,Household & Personal Products,24214906880.0,1.117,2.08,,24.929628,-0.518,44020.0,United States,https://www.elcompanies.com
+HSY,Consumer Defensive,Confectioners,34264387584.0,0.283,3.24,20.801968,20.133333,-0.719,18540.0,United States,https://www.thehersheycompany.com
+CHD,Consumer Defensive,Household & Personal Products,23911032832.0,0.515,1.22,41.66953,26.02949,-0.033,5750.0,United States,https://www.churchdwight.com
+ABBV,Healthcare,Drug Manufacturers - General,323710451712.0,0.551,3.58,77.98298,15.107996,-0.061,55000.0,United States,https://www.abbvie.com
+ABT,Healthcare,Medical Devices,228440997888.0,0.743,1.8,17.074123,25.445738,0.082,114000.0,United States,https://www.abbott.com
+AMGN,Healthcare,Drug Manufacturers - General,146073206784.0,0.497,3.5,24.74135,13.142719,,28000.0,United States,https://www.amgen.com
+JNJ,Healthcare,Drug Manufacturers - General,367984345088.0,0.411,3.4,17.012236,14.428302,2.379,138100.0,United States,https://www.jnj.com
+PFE,Healthcare,Drug Manufacturers - General,132582825984.0,0.502,7.38,16.89855,7.959044,-0.048,81000.0,United States,https://www.pfizer.com
+LLY,Healthcare,Drug Manufacturers - General,640723189760.0,0.472,0.84,58.11971,31.496471,0.23,47000.0,United States,https://www.lilly.com
+MRK,Healthcare,Drug Manufacturers - General,194805710848.0,0.441,4.18,11.276163,8.253192,0.067,73000.0,United States,https://www.merck.com
+GEHC,Healthcare,Health Information Services,31667326976.0,1.377,0.2,14.529412,14.8094225,0.508,53000.0,United States,https://www.gehealthcare.com
+ISRG,Healthcare,Medical Instruments & Supplies,193380827136.0,1.702,,78.76496,68.64376,0.282,15638.0,United States,https://www.intuitive.com
+MDT,Healthcare,Medical Devices,103426113536.0,0.83,3.52,22.349031,13.791453,0.616,95000.0,Ireland,https://www.medtronic.com
+DHR,Healthcare,Diagnostics & Research,132069736448.0,0.834,0.69,35.69439,22.021479,-0.123,61000.0,United States,https://www.danaher.com
+GILD,Healthcare,Drug Manufacturers - General,133560762368.0,0.282,2.94,22.556723,14.450875,,17600.0,United States,https://www.gilead.com
+BIIB,Healthcare,Drug Manufacturers - General,18434686976.0,0.124,,12.431818,7.5516205,-0.389,7605.0,United States,https://www.biogen.com
+DXCM,Healthcare,Medical Devices,33136963584.0,1.435,,63.54135,41.630543,-0.28,10200.0,United States,https://www.dexcom.com/global
+IDXX,Healthcare,Diagnostics & Research,40337215488.0,1.525,,46.31302,41.93729,0.03,11000.0,United States,https://www.idexx.com
+BMY,Healthcare,Drug Manufacturers - General,95343493120.0,0.4,5.29,17.481342,6.6642957,,34100.0,United States,https://www.bms.com
+TMO,Healthcare,Diagnostics & Research,148604289024.0,0.826,0.44,23.088564,16.758621,0.135,125000.0,United States,https://www.thermofisher.com
+AZN,Healthcare,Drug Manufacturers - General,218298466304.0,0.176,2.2,28.27711,12.825138,0.338,94300.0,United Kingdom,https://www.astrazeneca.com
+HCA,Healthcare,Medical Care Facilities,90597761024.0,1.468,0.76,16.72247,15.339715,0.012,226000.0,United States,https://hcahealthcare.com
+CVS,Healthcare,Healthcare Plans,76951166976.0,0.6,4.37,14.5179,9.387346,0.598,219000.0,United States,https://www.cvshealth.com
+AMZN,Consumer Cyclical,Internet Retail,2133790294016.0,1.308,,32.78793,32.6813,0.642,1560000.0,United States,https://www.aboutamazon.com
+TSLA,Consumer Cyclical,Auto Manufacturers,1093000560640.0,2.434,,192.80682,104.734566,-0.706,125665.0,United States,https://www.tesla.com
+HD,Consumer Cyclical,Home Improvement Retail,360507604992.0,1.056,2.54,24.623898,23.250639,-0.046,470000.0,United States,https://www.homedepot.com
+MCD,Consumer Cyclical,Restaurants,224927940608.0,0.567,2.25,27.78887,24.946075,-0.032,150000.0,United States,https://www.mcdonalds.com
+BKNG,Consumer Cyclical,Travel Services,173530906624.0,1.425,0.72,33.222027,25.412436,-0.571,24500.0,United States,https://www.bookingholdings.com
+GM,Consumer Cyclical,Auto Manufacturers,46812270592.0,1.363,1.23,6.800279,4.6064334,-0.066,162000.0,United States,https://www.gm.com
+LOW,Consumer Cyclical,Home Improvement Retail,123734204416.0,0.995,2.08,18.28536,17.503563,-0.065,300000.0,United States,https://www.lowes.com
+NKE,Consumer Cyclical,Footwear & Accessories,88588918784.0,1.234,2.67,19.940199,18.582043,-0.323,79400.0,United States,https://www.nike.com
+SBUX,Consumer Cyclical,Restaurants,95912165376.0,0.983,2.89,30.69091,22.688171,-0.503,361000.0,United States,https://www.starbucks.com
+TGT,Consumer Defensive,Discount Stores,42842075136.0,1.265,4.75,10.361538,8.971456,0.1,440000.0,United States,https://target.com
+DIS,Communication Services,Entertainment,197249138688.0,1.493,0.91,22.391836,21.304853,,177080.0,United States,https://thewaltdisneycompany.com
+ABNB,Consumer Cyclical,Travel Services,78213234688.0,1.146,,32.162437,28.16,-0.417,7300.0,United States,https://www.airbnb.com
+YUM,Consumer Cyclical,Restaurants,40430006272.0,0.769,1.95,28.974104,23.922697,-0.194,40000.0,United States,https://www.yum.com
+ROST,Consumer Cyclical,Apparel Retail,45135749120.0,1.177,1.18,21.684044,20.517189,-0.018,107000.0,United States,https://www.rossstores.com
+TJX,Consumer Cyclical,Apparel Retail,140342788096.0,0.937,1.35,29.57647,27.326086,-0.032,364000.0,United States,https://www.tjx.com
+ULTA,Consumer Cyclical,Specialty Retail,18377000960.0,1.057,,16.050472,17.797989,-0.003,20000.0,United States,https://www.ulta.com
+F,Consumer Cyclical,Auto Manufacturers,41197056000.0,1.547,7.24,8.288,5.9199996,-0.646,170000.0,United States,https://www.ford.com
+EBAY,Consumer Cyclical,Internet Retail,33143900160.0,1.291,1.61,17.288462,13.777778,0.148,11500.0,United States,https://www.ebayinc.com
+ETSY,Consumer Cyclical,Internet Retail,4963823104.0,1.779,,34.492752,18.307692,,2400.0,United States,https://www.etsy.com
+BBY,Consumer Cyclical,Specialty Retail,14801084416.0,1.296,5.43,16.336447,10.222221,-0.746,85000.0,United States,https://bestbuy.com
+AAPL,Technology,Consumer Electronics,3007472730112.0,1.275,0.52,31.364485,24.231047,0.048,164000.0,United States,https://www.apple.com
+MSFT,Technology,Software - Infrastructure,3380764999680.0,0.985,0.73,35.20588,30.425417,0.177,228000.0,United States,https://www.microsoft.com
+AMD,Technology,Semiconductors,179505201152.0,1.968,,80.81022,21.707844,4.764,28000.0,United States,https://www.amd.com
+ADBE,Technology,Software - Application,176587440128.0,1.551,,27.402777,20.162045,1.921,30709.0,United States,https://www.adobe.com
+AVGO,Technology,Semiconductors,1083940536320.0,1.059,1.02,106.235016,37.363045,1.727,37000.0,United States,https://www.broadcom.com
+INTC,Technology,Semiconductors,89639092224.0,1.144,,,21.185566,,108900.0,United States,https://www.intel.com
+CRM,Technology,Software - Application,271934128128.0,1.421,0.59,44.63307,25.464512,0.181,76453.0,United States,https://www.salesforce.com
+CSCO,Technology,Communication Equipment,250905608192.0,0.888,2.59,25.861225,16.246153,0.321,90400.0,United States,https://www.cisco.com
+NVDA,Technology,Semiconductors,3239404896256.0,2.114,0.03,45.18027,32.24029,0.798,36000.0,United States,https://www.nvidia.com
+ORCL,Technology,Software - Infrastructure,441133400064.0,1.276,1.27,36.927227,21.97067,0.223,159000.0,United States,https://www.oracle.com
+QCOM,Technology,Semiconductors,161812250624.0,1.292,2.42,15.037754,12.049877,0.209,49000.0,United States,https://www.qualcomm.com
+PLTR,Technology,Software - Infrastructure,288593379328.0,2.684,,531.6956,260.1915,1.028,4001.0,United States,https://www.palantir.com
+IBM,Technology,Information Technology Services,240128294912.0,0.629,2.6,44.241436,24.351555,-0.343,270300.0,United States,https://www.ibm.com
+NOW,Technology,Software - Application,210247139328.0,0.974,,136.89622,60.82455,0.326,26293.0,United States,https://www.servicenow.com
+TXN,Technology,Semiconductors,163715743744.0,0.955,3.02,34.13068,30.64796,0.067,34000.0,United States,https://www.ti.com
+CDNS,Technology,Software - Application,86453280768.0,1.045,,80.56743,46.22336,0.105,12837.0,United States,https://www.cadence.com
+ASML,Technology,Semiconductor Equipment & Materials,295005257728.0,1.221,1.13,29.675482,27.741573,0.924,43129.0,Netherlands,https://www.asml.com
+GFS,Technology,Semiconductors,20791431168.0,1.538,,,20.938547,0.579,13000.0,United States,https://gf.com
+APP,Technology,Software - Application,118932881408.0,2.392,,63.6721,68.11434,1.441,1533.0,United States,https://www.applovin.com
+ANSS,Technology,Software - Application,30212366336.0,1.214,,50.98665,31.212532,0.491,6600.0,United States,https://www.ansys.com
+AIG,Financial Services,Insurance - Diversified,47270584320.0,0.7,2.19,20.004877,12.223546,-0.426,22200.0,United States,https://www.aig.com
+AXP,Financial Services,Credit Services,201195143168.0,1.239,1.14,20.040474,18.993385,0.06,75100.0,United States,https://www.americanexpress.com
+BAC,Financial Services,Banks - Diversified,326205734912.0,1.28,2.4,12.928359,11.833333,0.108,213000.0,United States,https://www.bankofamerica.com
+BK,Financial Services,Banks - Diversified,63802404864.0,1.047,2.11,14.548123,13.656967,0.19,51000.0,United States,https://www.bny.com
+C,Financial Services,Banks - Diversified,137128738816.0,1.285,3.05,11.598736,10.211405,0.206,229000.0,United States,https://www.citigroup.com
+GS,Financial Services,Capital Markets,183561486336.0,1.311,2.01,13.889714,14.394368,0.147,46600.0,United States,https://www.goldmansachs.com
+JPM,Financial Services,Banks - Diversified,724425375744.0,1.068,2.15,12.7904825,15.571686,0.091,318477.0,United States,https://www.jpmorganchase.com
+MA,Financial Services,Credit Services,517733875712.0,1.061,0.53,40.009827,34.807083,0.089,35300.0,United States,https://www.mastercard.com
+MET,Financial Services,Insurance - Life,52133003264.0,0.832,2.92,12.689544,8.014448,0.09,45000.0,United States,https://www.metlife.com
+MS,Financial Services,Capital Markets,202561454080.0,1.3,2.93,14.784544,15.921817,0.265,81000.0,United States,https://www.morganstanley.com
+PYPL,Financial Services,Credit Services,69487476736.0,1.511,,16.05618,14.611452,0.449,24400.0,United States,https://www.paypal.com
+SCHW,Financial Services,Capital Markets,158639652864.0,0.895,1.24,26.457575,22.976315,0.402,32100.0,United States,https://www.schwab.com
+USB,Financial Services,Banks - Regional,67182247936.0,0.992,4.64,10.673267,9.958429,0.296,70000.0,United States,https://www.usbank.com
+COF,Financial Services,Credit Services,120704417792.0,1.135,1.27,15.845379,12.040869,0.097,53900.0,United States,https://www.capitalone.com
+BLK,Financial Services,Asset Management,150262726656.0,1.426,2.15,23.587063,19.753565,-0.04,22600.0,United States,https://www.blackrock.com
+TROW,Financial Services,Asset Management,20811048960.0,1.519,5.38,10.721907,10.102674,-0.145,8084.0,United States,https://www.troweprice.com
+PGR,Financial Services,Insurance - Property & Casualty,162454388736.0,0.404,1.77,18.686445,20.08116,0.101,66308.0,United States,https://www.progressive.com
+FITB,Financial Services,Banks - Regional,25037623296.0,0.914,3.95,11.907935,10.276711,-0.01,18786.0,United States,https://www.53.com
+DUK,Utilities,Utilities - Regulated Electric,90830258176.0,0.358,3.58,19.379766,18.432177,0.212,26413.0,United States,https://www.duke-energy.com
+NEE,Utilities,Utilities - Regulated Electric,153944342528.0,0.674,3.03,28.00749,20.320652,-0.633,16800.0,United States,https://www.nexteraenergy.com
+SO,Utilities,Utilities - Regulated Electric,99402162176.0,0.367,3.28,21.666666,20.91435,0.182,28314.0,United States,https://www.southerncompany.com
+EXC,Utilities,Utilities - Regulated Electric,43662602240.0,0.476,3.7,16.078066,16.444866,0.38,20000.0,United States,https://www.exeloncorp.com
+CEG,Utilities,Utilities - Renewable,93050372096.0,1.163,0.52,31.251581,33.17207,-0.866,14215.0,United States,https://www.constellationenergy.com
+XEL,Utilities,Utilities - Regulated Electric,39000580096.0,0.385,3.37,19.888235,17.655354,-0.01,11380.0,United States,https://mn.my.xcelenergy.com/s/
+AEP,Utilities,Utilities - Regulated Electric,54968668160.0,0.41,3.62,19.864866,17.47029,-0.202,16330.0,United States,https://www.aep.com
+ES,Utilities,Utilities - Regulated Electric,23957174272.0,0.648,4.62,28.600878,13.642259,0.055,10000.0,United States,https://www.eversource.com
+D,Utilities,Utilities - Regulated Electric,47338426368.0,0.557,4.81,21.432432,16.423077,0.465,14700.0,United States,https://www.dominionenergy.com
+NRG,Utilities,Utilities - Independent Power Producers,29725339648.0,1.137,1.16,24.1717,22.03478,0.468,15637.0,United States,https://www.nrg.com
+PPL,Utilities,Utilities - Regulated Electric,25053657088.0,0.668,3.22,25.291044,18.519125,0.349,6653.0,United States,https://www.pplweb.com
+PEG,Utilities,Utilities - Regulated Electric,40418840576.0,0.497,3.11,22.131147,19.901718,0.107,13047.0,United States,https://investor.pseg.com/home/default.aspx
+ED,Utilities,Utilities - Regulated Electric,37456371712.0,0.259,3.27,19.216267,18.49822,0.099,15097.0,United States,https://www.conedison.com
+EVRG,Utilities,Utilities - Regulated Electric,15642737664.0,0.472,3.93,17.890789,16.82797,0.019,4731.0,United States,https://investors.evergy.com
+EIX,Utilities,Utilities - Regulated Electric,18591797248.0,0.783,6.85,6.8345118,8.477193,,14013.0,United States,https://www.edison.com
+WEC,Utilities,Utilities - Regulated Electric,33544175616.0,0.439,3.4,20.489279,20.136017,0.164,7000.0,United States,https://www.wecenergygroup.com
+AWK,Utilities,Utilities - Regulated Water,27582496768.0,0.698,2.34,25.763206,24.814035,0.108,6700.0,United States,https://www.amwater.com
+ATO,Utilities,Utilities - Regulated Gas,24300472320.0,0.703,2.27,21.36732,21.427172,0.124,5260.0,United States,https://www.atmosenergy.com
+SRE,Utilities,Utilities - Diversified,48312754176.0,0.656,3.48,16.281319,14.412452,0.129,16773.0,United States,https://www.sempra.com
+CMS,Utilities,Utilities - Regulated Electric,21097216000.0,0.379,3.08,20.866863,19.701117,0.059,8324.0,United States,https://www.cmsenergy.com
+COP,Energy,Oil & Gas E&P,122403274752.0,0.62,3.22,12.288974,12.07472,0.117,11800.0,United States,https://www.conocophillips.com
+CVX,Energy,Oil & Gas Integrated,252749692928.0,0.801,4.69,16.675428,13.216486,-0.364,45298.0,United States,https://www.chevron.com
+XOM,Energy,Oil & Gas Integrated,483196862464.0,0.463,3.53,14.889774,14.246507,-0.062,61000.0,United States,https://corporate.exxonmobil.com
+FANG,Energy,Oil & Gas E&P,45259747328.0,1.036,3.38,9.633707,10.5812845,0.829,1983.0,United States,https://www.diamondbackenergy.com
+BKR,Energy,Oil & Gas Equipment & Services,38678880256.0,0.9,2.36,13.324232,15.190662,-0.116,57000.0,United States,https://www.bakerhughes.com
+EOG,Energy,Oil & Gas E&P,68376195072.0,0.761,3.26,11.599999,11.327305,-0.182,3150.0,United States,https://www.eogresources.com
+OXY,Energy,Oil & Gas E&P,45712977920.0,0.853,2.07,18.805668,14.699367,0.054,13323.0,United States,https://www.oxy.com
+PSX,Energy,Oil & Gas Refining & Marketing,49768427520.0,0.998,3.93,27.573364,12.871444,-0.349,13200.0,United States,https://www.phillips66.com
+HAL,Energy,Oil & Gas Equipment & Services,19936790528.0,1.141,2.93,9.702929,7.1353846,-0.663,48000.0,United States,https://www.halliburton.com
+SLB,Energy,Oil & Gas Equipment & Services,49039847424.0,1.026,3.14,12.305084,9.891007,-0.254,110000.0,United States,https://www.slb.com
+VLO,Energy,Oil & Gas Refining & Marketing,42004058112.0,0.972,3.37,45.92808,13.89741,,9898.0,United States,https://www.valero.com
+HES,Energy,Oil & Gas E&P,43996893184.0,0.626,1.41,19.730928,18.71842,-0.558,1797.0,United States,https://www.hess.com
+DVN,Energy,Oil & Gas E&P,22544130048.0,1.063,2.73,7.9977226,7.872197,-0.171,2300.0,United States,https://www.devonenergy.com
+MPC,Energy,Oil & Gas Refining & Marketing,51043606528.0,0.868,2.19,22.885674,16.289215,,18300.0,United States,https://www.marathonpetroleum.com
+APA,Energy,Oil & Gas E&P,7581353472.0,1.246,4.76,7.530466,7.64,1.629,2305.0,United States,https://www.apacorp.com
+CPE,,,,,,,,,,,
+SM,Energy,Oil & Gas E&P,3234696192.0,2.192,2.83,3.9635344,3.8034995,0.389,663.0,United States,https://sm-energy.com
+MTDR,Energy,Oil & Gas E&P,6465482752.0,1.455,2.42,6.931544,6.455,0.239,452.0,United States,https://www.matadorresources.com
+PDCE,,,,,,,,,,,
+PXD,,,,,,,,,,,
