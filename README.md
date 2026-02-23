@@ -67,17 +67,20 @@ pip install yfinance pandas
 ### Running the worker
 
 ```bash
-# Process all 11 sectors (default date range 2020-01-01 to 2025-05-20)
-python src/yahoo_stock_data_etl_worker.py
+# Daily incremental update (last 7 days, default mode)
+python src/yahoo_stock_data_etl_worker.py --mode daily
 
-# Specify a custom output directory
-python src/yahoo_stock_data_etl_worker.py --output-dir data/out
+# Full historical backfill from 2020-01-01 through today
+python src/yahoo_stock_data_etl_worker.py --mode backfill
 
 # Process only two sectors with a custom date range
 python src/yahoo_stock_data_etl_worker.py \
     --sectors Technology,Healthcare \
     --start 2022-01-01 \
     --end 2024-12-31
+
+# Enable CSV file output for local debugging (off by default)
+python src/yahoo_stock_data_etl_worker.py --mode daily --write-csv
 
 # Process a custom list of tickers (grouped under sector "custom")
 python src/yahoo_stock_data_etl_worker.py --tickers AAPL,MSFT,NVDA
@@ -88,7 +91,7 @@ python src/yahoo_stock_data_etl_worker.py --tickers-csv data/stock_sector_list_2
 
 ### Outputs
 
-For each processed sector the script creates:
+For each processed sector the script creates (when `--write-csv` is passed):
 
 | File | Description |
 |------|-------------|
@@ -106,12 +109,71 @@ When more than one sector is processed, merged files are also written:
 
 | Argument | Default | Description |
 |----------|---------|-------------|
-| `--output-dir` | `data/out` | Output directory (repo-relative or absolute) |
-| `--start` | `2020-01-01` | Start date for trading data |
-| `--end` | `2025-05-20` | End date for trading data |
+| `--mode` | `daily` | `daily` fetches last 7 days; `backfill` fetches from 2020-01-01 |
+| `--output-dir` | `data/out` | Output directory for CSV files (repo-relative or absolute) |
+| `--start` | *(mode default)* | Start date for trading data (YYYY-MM-DD) |
+| `--end` | *(today UTC)* | End date for trading data (YYYY-MM-DD) |
 | `--sectors` | *(all)* | Comma-separated sector names to process |
 | `--tickers` | — | Comma-separated tickers (overrides sector mapping) |
 | `--tickers-csv` | — | CSV file with `sector` and `ticker` columns |
+| `--write-csv` | *(off)* | Write per-sector and merged CSV files |
+
+### Loading to Supabase / Postgres
+
+The worker reads `DATABASE_URL` from the environment.  When set, cleaned data
+is upserted into two tables:
+
+#### `market_data.daily_prices`
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `ticker` | text | Primary key (with `date`) |
+| `date` | date | Primary key (with `ticker`) |
+| `open` | numeric | |
+| `high` | numeric | |
+| `low` | numeric | |
+| `close` | numeric | |
+| `volume` | numeric | |
+| `ingested_at` | timestamptz | Set to `now()` on every upsert |
+
+#### `market_data.ticker_metadata`
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `ticker` | text | Primary key |
+| `sector` | text | |
+| `industry` | text | |
+| `marketcap` | numeric | |
+| `beta` | numeric | |
+| `dividendyield` | numeric | |
+| `trailingpe` | numeric | |
+| `forwardpe` | numeric | |
+| `earningsquarterlygrowth` | numeric | |
+| `fulltimeemployees` | numeric | |
+| `country` | text | |
+| `website` | text | |
+| `ingested_at` | timestamptz | Set to `now()` on every upsert |
+
+#### Setting up the DATABASE_URL secret
+
+1. In your Supabase project, go to **Settings → Database** and copy the
+   connection string (use the *direct* connection or a *pooler* URL).
+2. Create a GitHub Actions secret called `DATABASE_URL` in your repository:
+   **Settings → Secrets and variables → Actions → New repository secret**.
+3. The worker automatically picks it up via `os.environ.get("DATABASE_URL")`.
+
+To run a backfill locally:
+
+```bash
+export DATABASE_URL="postgresql://user:password@host:5432/dbname"
+python src/yahoo_stock_data_etl_worker.py --mode backfill
+```
+
+### Scheduled GitHub Actions workflow
+
+`.github/workflows/yahoo_etl.yml` runs the worker in `daily` mode every day
+at **08:00 UTC** and can also be triggered manually via **workflow_dispatch**.
+It requires the `DATABASE_URL` repository secret described above.
 
 ## 🤝 Contributing
 
