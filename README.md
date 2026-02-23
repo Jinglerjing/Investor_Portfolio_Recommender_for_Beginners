@@ -45,6 +45,74 @@ To provide a simple, beginner-friendly list of **20 actively traded stocks from 
 - 🧠 Add educational content: what is a sector, what is trading value, how to use this tool
 - 📈 Enable simple charts and learning paths by sector
 
+## 🔧 Yahoo Stock Data ETL Worker
+
+`src/yahoo_stock_data_etl_worker.py` is a standalone batch script that downloads
+trading data and company metadata from Yahoo Finance via `yfinance`, cleans them,
+and writes per-sector CSV files to an output directory.
+
+### Dependencies
+
+```
+yfinance
+pandas
+```
+
+Install them with:
+
+```bash
+pip install yfinance pandas
+```
+
+### Running the worker
+
+```bash
+# Process all 11 sectors (default date range 2020-01-01 to 2025-05-20)
+python src/yahoo_stock_data_etl_worker.py
+
+# Specify a custom output directory
+python src/yahoo_stock_data_etl_worker.py --output-dir data/out
+
+# Process only two sectors with a custom date range
+python src/yahoo_stock_data_etl_worker.py \
+    --sectors Technology,Healthcare \
+    --start 2022-01-01 \
+    --end 2024-12-31
+
+# Process a custom list of tickers (grouped under sector "custom")
+python src/yahoo_stock_data_etl_worker.py --tickers AAPL,MSFT,NVDA
+
+# Load sector/ticker assignments from a CSV file
+python src/yahoo_stock_data_etl_worker.py --tickers-csv data/stock_sector_list_2025.csv
+```
+
+### Outputs
+
+For each processed sector the script creates:
+
+| File | Description |
+|------|-------------|
+| `<output-dir>/<Sector>/<Sector>_trading_data.csv` | Cleaned OHLCV data with a `Ticker` column |
+| `<output-dir>/<Sector>/<Sector>_metadata.csv` | Cleaned company metadata |
+
+When more than one sector is processed, merged files are also written:
+
+| File | Description |
+|------|-------------|
+| `<output-dir>/merged_trading_data.csv` | All sectors' trading data combined |
+| `<output-dir>/merged_metadata.csv` | All sectors' metadata combined |
+
+### CLI reference
+
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--output-dir` | `data/out` | Output directory (repo-relative or absolute) |
+| `--start` | `2020-01-01` | Start date for trading data |
+| `--end` | `2025-05-20` | End date for trading data |
+| `--sectors` | *(all)* | Comma-separated sector names to process |
+| `--tickers` | — | Comma-separated tickers (overrides sector mapping) |
+| `--tickers-csv` | — | CSV file with `sector` and `ticker` columns |
+
 ## 🤝 Contributing
 
 Have suggestions for companies or sectors? Spot an error or want to help with the educational content? Pull requests and issues are welcome.
