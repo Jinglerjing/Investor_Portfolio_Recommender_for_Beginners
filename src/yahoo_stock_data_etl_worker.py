@@ -11,6 +11,7 @@ See --help for all options.
 
 import argparse
 import os
+from datetime import datetime, timedelta, timezone
 
 import pandas as pd
 import yfinance as yf
@@ -90,6 +91,16 @@ NUMERIC_META_COLS = [
     "marketCap", "beta", "dividendYield", "trailingPE", "forwardPE",
     "earningsQuarterlyGrowth", "fullTimeEmployees",
 ]
+
+# Mapping from DataFrame column names to database column names for metadata
+METADATA_RENAME: dict[str, str] = {
+    "marketCap": "marketcap",
+    "dividendYield": "dividendyield",
+    "trailingPE": "trailingpe",
+    "forwardPE": "forwardpe",
+    "earningsQuarterlyGrowth": "earningsquarterlygrowth",
+    "fullTimeEmployees": "fulltimeemployees",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -198,6 +209,110 @@ def clean_metadata(df: pd.DataFrame) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Database loading
+# ---------------------------------------------------------------------------
+
+def _make_engine(database_url: str):
+    """Create a SQLAlchemy engine from *database_url*."""
+    try:
+        from sqlalchemy import create_engine  # noqa: PLC0415
+    except ImportError as exc:
+        raise ImportError(
+            "sqlalchemy is required for DB loading. "
+            "Install it with: pip install sqlalchemy psycopg2-binary"
+        ) from exc
+    return create_engine(database_url)
+
+
+def upsert_trading_data(df: pd.DataFrame, engine) -> None:
+    """Upsert cleaned trading data into ``market_data.daily_prices``.
+
+    Maps DataFrame columns to lowercase DB columns and performs an idempotent
+    ``INSERT … ON CONFLICT (ticker, date) DO UPDATE`` so that re-runs do not
+    create duplicate rows.  ``ingested_at`` is set to ``now()`` on every
+    insert or update.
+    """
+    if df.empty:
+        return
+
+    from sqlalchemy import text  # noqa: PLC0415
+
+    db_df = df[["Date", "Ticker", "Open", "High", "Low", "Close", "Volume"]].copy()
+    db_df = db_df.rename(columns={
+        "Date": "date",
+        "Ticker": "ticker",
+        "Open": "open",
+        "High": "high",
+        "Low": "low",
+        "Close": "close",
+        "Volume": "volume",
+    })
+    # Replace NaN/NaT with None so the DB driver can map them to SQL NULL
+    db_df = db_df.where(pd.notna(db_df), None)
+
+    sql = text("""
+        INSERT INTO market_data.daily_prices
+            (date, ticker, open, high, low, close, volume, ingested_at)
+        VALUES (:date, :ticker, :open, :high, :low, :close, :volume, now())
+        ON CONFLICT (ticker, date) DO UPDATE SET
+            open        = EXCLUDED.open,
+            high        = EXCLUDED.high,
+            low         = EXCLUDED.low,
+            close       = EXCLUDED.close,
+            volume      = EXCLUDED.volume,
+            ingested_at = now()
+    """)
+    records = db_df.to_dict(orient="records")
+    with engine.begin() as conn:
+        conn.execute(sql, records)
+    print(f"  Upserted {len(records)} rows into market_data.daily_prices")
+
+
+def upsert_metadata(df: pd.DataFrame, engine) -> None:
+    """Upsert cleaned metadata into ``market_data.ticker_metadata``.
+
+    Maps camelCase DataFrame columns to lowercase DB columns and performs an
+    idempotent ``INSERT … ON CONFLICT (ticker) DO UPDATE``.
+    ``ingested_at`` is refreshed on every update.
+    """
+    if df.empty:
+        return
+
+    from sqlalchemy import text  # noqa: PLC0415
+
+    db_df = df.rename(columns=METADATA_RENAME).copy()
+    # Replace NaN/NaT with None
+    db_df = db_df.where(pd.notna(db_df), None)
+
+    # Validate column names against the known allowlist to prevent SQL injection.
+    # Columns originate from META_FIELDS (hardcoded) renamed via METADATA_RENAME.
+    _allowed_meta_cols = {
+        "ticker", "sector", "industry", "marketcap", "beta", "dividendyield",
+        "trailingpe", "forwardpe", "earningsquarterlygrowth", "fulltimeemployees",
+        "country", "website",
+    }
+    cols = db_df.columns.tolist()
+    unknown = set(cols) - _allowed_meta_cols
+    if unknown:
+        raise ValueError(f"Unexpected metadata columns (possible injection risk): {unknown}")
+    col_names = ", ".join(cols)
+    placeholders = ", ".join(f":{c}" for c in cols)
+    update_set = ", ".join(
+        f"{c} = EXCLUDED.{c}" for c in cols if c != "ticker"
+    )
+    sql = text(f"""
+        INSERT INTO market_data.ticker_metadata ({col_names}, ingested_at)
+        VALUES ({placeholders}, now())
+        ON CONFLICT (ticker) DO UPDATE SET
+            {update_set},
+            ingested_at = now()
+    """)
+    records = db_df.to_dict(orient="records")
+    with engine.begin() as conn:
+        conn.execute(sql, records)
+    print(f"  Upserted {len(records)} rows into market_data.ticker_metadata")
+
+# ---------------------------------------------------------------------------
 # Sector runner
 # ---------------------------------------------------------------------------
 
@@ -207,34 +322,47 @@ def run_sector(
     output_dir: str,
     start: str,
     end: str,
+    write_csv: bool = True,
+    engine=None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Run the full ETL pipeline for one sector.
 
-    Creates ``<output_dir>/<sector>/`` and writes:
-    - ``<sector>_trading_data.csv``
-    - ``<sector>_metadata.csv``
+    When *write_csv* is ``True`` (default), creates ``<output_dir>/<sector>/``
+    and writes per-sector CSV files.  When *engine* is provided, cleaned data
+    is upserted into the Supabase/Postgres database.
 
     Returns the cleaned (trading_df, meta_df) tuple.
     """
     print(f"\n=== Processing sector: {sector} ===")
-    sector_dir = os.path.join(output_dir, sector)
-    os.makedirs(sector_dir, exist_ok=True)
+
+    # Pre-create the sector output directory when CSV writing is enabled
+    if write_csv:
+        sector_dir = os.path.join(output_dir, sector)
+        os.makedirs(sector_dir, exist_ok=True)
+    else:
+        sector_dir = ""
 
     # Trading data
     trading_df = fetch_trading_data(tickers, start, end)
     trading_df = clean_trading_data(trading_df)
     if not trading_df.empty:
-        trading_path = os.path.join(sector_dir, f"{sector}_trading_data.csv")
-        trading_df.to_csv(trading_path, index=False)
-        print(f"  Saved trading data -> {trading_path}")
+        if write_csv:
+            trading_path = os.path.join(sector_dir, f"{sector}_trading_data.csv")
+            trading_df.to_csv(trading_path, index=False)
+            print(f"  Saved trading data -> {trading_path}")
+        if engine is not None:
+            upsert_trading_data(trading_df, engine)
 
     # Metadata
     meta_df = fetch_metadata(tickers)
     meta_df = clean_metadata(meta_df)
     if not meta_df.empty:
-        meta_path = os.path.join(sector_dir, f"{sector}_metadata.csv")
-        meta_df.to_csv(meta_path, index=False)
-        print(f"  Saved metadata      -> {meta_path}")
+        if write_csv:
+            meta_path = os.path.join(sector_dir, f"{sector}_metadata.csv")
+            meta_df.to_csv(meta_path, index=False)
+            print(f"  Saved metadata      -> {meta_path}")
+        if engine is not None:
+            upsert_metadata(meta_df, engine)
 
     return trading_df, meta_df
 
@@ -252,19 +380,35 @@ def _build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
+        "--mode",
+        choices=["daily", "backfill"],
+        default="daily",
+        help=(
+            "Run mode: 'daily' fetches the last 7 calendar days (for incremental "
+            "updates); 'backfill' fetches from 2020-01-01 through today.  "
+            "Explicit --start/--end values always override mode defaults."
+        ),
+    )
+    parser.add_argument(
         "--output-dir",
         default="data/out",
         help="Directory for output files (relative to repo root, or absolute).",
     )
     parser.add_argument(
         "--start",
-        default="2020-01-01",
-        help="Start date for trading data (YYYY-MM-DD).",
+        default=None,
+        help=(
+            "Start date for trading data (YYYY-MM-DD).  "
+            "Defaults to mode-specific value when not provided."
+        ),
     )
     parser.add_argument(
         "--end",
-        default="2025-05-20",
-        help="End date for trading data (YYYY-MM-DD).",
+        default=None,
+        help=(
+            "End date for trading data (YYYY-MM-DD).  "
+            "Defaults to today's UTC date when not provided."
+        ),
     )
     parser.add_argument(
         "--sectors",
@@ -291,12 +435,32 @@ def _build_parser() -> argparse.ArgumentParser:
             "Overrides the built-in sector mapping when provided."
         ),
     )
+    parser.add_argument(
+        "--write-csv",
+        action="store_true",
+        default=False,
+        help=(
+            "Write per-sector and merged CSV files to --output-dir.  "
+            "Off by default; enable for local debugging."
+        ),
+    )
     return parser
 
 
 def main() -> None:
     parser = _build_parser()
     args = parser.parse_args()
+
+    # Resolve today's UTC date once
+    today_date = datetime.now(tz=timezone.utc).date()
+    today = today_date.isoformat()
+
+    # Apply mode-specific defaults for start/end when not explicitly provided
+    if args.mode == "backfill":
+        start = args.start or "2020-01-01"
+    else:  # daily
+        start = args.start or (today_date - timedelta(days=7)).isoformat()
+    end = args.end or today
 
     # Resolve output directory relative to the repo root when not absolute
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -305,8 +469,18 @@ def main() -> None:
         if os.path.isabs(args.output_dir)
         else os.path.join(repo_root, args.output_dir)
     )
-    os.makedirs(output_dir, exist_ok=True)
-    print(f"Output directory: {output_dir}")
+    if args.write_csv:
+        os.makedirs(output_dir, exist_ok=True)
+        print(f"Output directory: {output_dir}")
+
+    # Set up DB engine if DATABASE_URL is available
+    database_url = os.environ.get("DATABASE_URL")
+    engine = None
+    if database_url:
+        print("DATABASE_URL found – DB loading enabled.")
+        engine = _make_engine(database_url)
+    else:
+        print("DATABASE_URL not set – skipping DB loading.")
 
     # Build sector -> tickers mapping
     if args.tickers:
@@ -333,29 +507,32 @@ def main() -> None:
             )
             return
 
+    print(f"Mode: {args.mode}")
     print(f"Sectors to process: {', '.join(sector_map.keys())}")
-    print(f"Date range: {args.start} to {args.end}\n")
+    print(f"Date range: {start} to {end}\n")
 
     all_trading: list[pd.DataFrame] = []
     all_meta: list[pd.DataFrame] = []
 
     for sector, tickers in sector_map.items():
         trading_df, meta_df = run_sector(
-            sector, tickers, output_dir, args.start, args.end
+            sector, tickers, output_dir, start, end,
+            write_csv=args.write_csv,
+            engine=engine,
         )
         if not trading_df.empty:
             all_trading.append(trading_df)
         if not meta_df.empty:
             all_meta.append(meta_df)
 
-    # Write merged outputs when more than one sector was processed
-    if len(all_trading) > 1:
+    # Write merged CSV outputs when more than one sector was processed
+    if args.write_csv and len(all_trading) > 1:
         merged_trading = pd.concat(all_trading, ignore_index=True)
         merged_trading_path = os.path.join(output_dir, "merged_trading_data.csv")
         merged_trading.to_csv(merged_trading_path, index=False)
         print(f"\nSaved merged trading data -> {merged_trading_path}")
 
-    if len(all_meta) > 1:
+    if args.write_csv and len(all_meta) > 1:
         merged_meta = pd.concat(all_meta, ignore_index=True)
         merged_meta_path = os.path.join(output_dir, "merged_metadata.csv")
         merged_meta.to_csv(merged_meta_path, index=False)

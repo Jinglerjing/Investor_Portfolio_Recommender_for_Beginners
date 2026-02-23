@@ -1,0 +1,29 @@
+name: Yahoo Finance ETL
+
+on:
+  schedule:
+    - cron: "0 8 * * *"   # daily at 08:00 UTC
+  workflow_dispatch:        # allow manual runs
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ETL (daily mode)
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python src/yahoo_stock_data_etl_worker.py --mode daily
