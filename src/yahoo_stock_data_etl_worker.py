@@ -10,6 +10,7 @@ See --help for all options.
 """
 
 import argparse
+import math
 import os
 from datetime import datetime, timedelta, timezone
 
@@ -104,6 +105,64 @@ METADATA_RENAME: dict[str, str] = {
 
 
 # ---------------------------------------------------------------------------
+# Bigint helpers
+# ---------------------------------------------------------------------------
+
+_BIGINT_MAX = 9_223_372_036_854_775_807
+_BIGINT_MIN = -9_223_372_036_854_775_808
+
+
+def _sanitize_bigint_series(series: pd.Series) -> pd.Series:
+    """Coerce *series* to nullable integers safe for a PostgreSQL ``bigint`` column.
+
+    Non-finite floats (NaN, ±inf) and values outside the signed 64-bit range
+    are replaced with ``None``; otherwise values are truncated to ``int``.
+    Prints a message when values are coerced so the workflow output stays
+    readable without being flooded.
+    """
+    def _coerce(v):
+        if v is None:
+            return None
+        try:
+            f = float(v)
+        except (TypeError, ValueError):
+            return None
+        if not math.isfinite(f):
+            return None
+        i = int(f)
+        if not (_BIGINT_MIN <= i <= _BIGINT_MAX):
+            return None
+        return i
+
+    coerced_list = [_coerce(v) for v in series]
+    coerced = pd.Series(coerced_list, index=series.index, name=series.name, dtype=object)
+    dropped = int(series.notna().sum()) - int(coerced.notna().sum())
+    if dropped > 0:
+        print(
+            f"  Coerced {dropped} out-of-range/non-finite value(s) in "
+            f"'{series.name}' to NULL (bigint overflow guard)"
+        )
+    return coerced
+
+
+def _to_records_nullsafe(df: pd.DataFrame) -> list[dict]:
+    """Convert *df* to a list of dicts, replacing non-finite floats with ``None``.
+
+    ``pd.DataFrame.to_dict(orient='records')`` preserves ``float('nan')`` in
+    float64 columns even after ``df.where(pd.notna(df), None)``.  This helper
+    ensures that NaN / ±inf values are mapped to ``None`` so the DB driver can
+    insert SQL ``NULL``.
+    """
+    return [
+        {
+            k: (None if isinstance(v, float) and not math.isfinite(v) else v)
+            for k, v in row.items()
+        }
+        for row in df.to_dict(orient="records")
+    ]
+
+
+# ---------------------------------------------------------------------------
 # ETL functions
 # ---------------------------------------------------------------------------
 
@@ -191,16 +250,19 @@ def clean_metadata(df: pd.DataFrame) -> pd.DataFrame:
     """Clean a metadata DataFrame.
 
     Steps:
-    - Drop rows where *all* columns except ``ticker`` are ``NaN``.
-    - Fill remaining ``NaN`` values with ``"NaN"`` (string sentinel).
+    - Normalize common missing-value sentinels (``"NaN"``, ``"nan"``,
+      ``"None"``, ``"null"``, ``""``) to ``None`` so they are stored as SQL
+      ``NULL`` rather than literal strings.
+    - Drop rows where *all* columns except ``ticker`` are ``NaN``/``None``.
     - Coerce numeric metadata columns.
     """
     if df.empty:
         return df
 
     non_ticker_cols = [c for c in df.columns if c != "ticker"]
+    sentinels = {"NaN", "nan", "None", "null", ""}
+    df[non_ticker_cols] = df[non_ticker_cols].replace(list(sentinels), None)
     df = df.dropna(subset=non_ticker_cols, how="all").reset_index(drop=True)
-    df[non_ticker_cols] = df[non_ticker_cols].fillna("NaN")
     for col in NUMERIC_META_COLS:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
@@ -247,7 +309,12 @@ def upsert_trading_data(df: pd.DataFrame, engine) -> None:
         "Close": "close",
         "Volume": "volume",
     })
-    # Replace NaN/NaT with None so the DB driver can map them to SQL NULL
+    # Sanitize the bigint column before the NULL sweep so out-of-range / NaN
+    # floats become Python None (-> SQL NULL) rather than raising an overflow.
+    db_df["volume"] = _sanitize_bigint_series(db_df["volume"])
+    # Replace remaining NaN/NaT with None so the DB driver maps them to SQL NULL.
+    # Note: db_df.where() alone does not convert NaN in float64 columns to None
+    # when the result is converted to dicts, so we use _to_records_nullsafe.
     db_df = db_df.where(pd.notna(db_df), None)
 
     sql = text("""
@@ -262,7 +329,7 @@ def upsert_trading_data(df: pd.DataFrame, engine) -> None:
             volume      = EXCLUDED.volume,
             ingested_at = now()
     """)
-    records = db_df.to_dict(orient="records")
+    records = _to_records_nullsafe(db_df)
     with engine.begin() as conn:
         conn.execute(sql, records)
     print(f"  Upserted {len(records)} rows into market_data.daily_prices")
@@ -281,7 +348,11 @@ def upsert_metadata(df: pd.DataFrame, engine) -> None:
     from sqlalchemy import text  # noqa: PLC0415
 
     db_df = df.rename(columns=METADATA_RENAME).copy()
-    # Replace NaN/NaT with None
+    # Sanitize the bigint column before the NULL sweep.
+    if "fulltimeemployees" in db_df.columns:
+        db_df["fulltimeemployees"] = _sanitize_bigint_series(db_df["fulltimeemployees"])
+    # Replace remaining NaN/NaT with None; use _to_records_nullsafe for the
+    # records dict because pandas float64 columns keep NaN after .where().
     db_df = db_df.where(pd.notna(db_df), None)
 
     # Validate column names against the known allowlist to prevent SQL injection.
@@ -307,7 +378,7 @@ def upsert_metadata(df: pd.DataFrame, engine) -> None:
             {update_set},
             ingested_at = now()
     """)
-    records = db_df.to_dict(orient="records")
+    records = _to_records_nullsafe(db_df)
     with engine.begin() as conn:
         conn.execute(sql, records)
     print(f"  Upserted {len(records)} rows into market_data.ticker_metadata")
