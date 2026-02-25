@@ -348,9 +348,12 @@ def upsert_metadata(df: pd.DataFrame, engine) -> None:
     from sqlalchemy import text  # noqa: PLC0415
 
     db_df = df.rename(columns=METADATA_RENAME).copy()
-    # Sanitize the bigint column before the NULL sweep.
-    if "fulltimeemployees" in db_df.columns:
-        db_df["fulltimeemployees"] = _sanitize_bigint_series(db_df["fulltimeemployees"])
+    # Sanitize bigint columns before the NULL sweep so that out-of-range /
+    # non-finite floats become Python None (→ SQL NULL) rather than raising an
+    # overflow or "invalid input syntax" error in the DB driver.
+    for _bigint_col in ("marketcap", "fulltimeemployees"):
+        if _bigint_col in db_df.columns:
+            db_df[_bigint_col] = _sanitize_bigint_series(db_df[_bigint_col])
     # Replace remaining NaN/NaT with None; use _to_records_nullsafe for the
     # records dict because pandas float64 columns keep NaN after .where().
     db_df = db_df.where(pd.notna(db_df), None)
