@@ -1,0 +1,36 @@
+name: Yahoo ETL - Backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "Start date (YYYY-MM-DD)"
+        required: true
+        default: "2020-01-01"
+      end:
+        description: "End date (YYYY-MM-DD)"
+        required: true
+        default: "2021-01-01"
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run backfill ETL into Supabase
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          python src/yahoo_stock_data_etl_worker.py --start "${{ inputs.start }}" --end "${{ inputs.end }}"
