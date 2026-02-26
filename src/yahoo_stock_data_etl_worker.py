@@ -425,7 +425,10 @@ def run_sector(
             trading_df.to_csv(trading_path, index=False)
             print(f"  Saved trading data -> {trading_path}")
         if engine is not None:
-            upsert_trading_data(trading_df, engine)
+            try:
+                upsert_trading_data(trading_df, engine)
+            except Exception as exc:
+                print(f"  WARNING: Failed to upsert trading data for {sector}: {exc}")
 
     # Metadata
     meta_df = fetch_metadata(tickers)
@@ -436,7 +439,10 @@ def run_sector(
             meta_df.to_csv(meta_path, index=False)
             print(f"  Saved metadata      -> {meta_path}")
         if engine is not None:
-            upsert_metadata(meta_df, engine)
+            try:
+                upsert_metadata(meta_df, engine)
+            except Exception as exc:
+                print(f"  WARNING: Failed to upsert metadata for {sector}: {exc}")
 
     return trading_df, meta_df
 
@@ -551,8 +557,19 @@ def main() -> None:
     database_url = os.environ.get("DATABASE_URL")
     engine = None
     if database_url:
-        print("DATABASE_URL found – DB loading enabled.")
-        engine = _make_engine(database_url)
+        print("DATABASE_URL found – testing DB connection...")
+        try:
+            from sqlalchemy import text as _text  # noqa: PLC0415
+            engine = _make_engine(database_url)
+            with engine.connect() as conn:
+                conn.execute(_text("SELECT 1"))
+            print("DB connection successful – DB loading enabled.")
+        except ImportError:
+            raise
+        except Exception as exc:
+            print(f"WARNING: DB connection failed: {exc}")
+            print("Skipping DB loading; ETL will run without writing to the database.")
+            engine = None
     else:
         print("DATABASE_URL not set – skipping DB loading.")
 
